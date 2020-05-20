@@ -66,6 +66,7 @@ rrt = RRT()
 rrt.path_plan()  
 print(rrt.points)
 
+# Visualizing of RRT
 plt.axes()
 points = [
     [(8,3),2],
@@ -90,9 +91,24 @@ for point in rrt.points:
     x.append(point[0])
     y.append(point[1])
 
-plt.scatter(x,y)
+plt.scatter(x,y, s=15)
 plt.axis('scaled') 
 plt.grid()
+
+#RRT Plot without smoothing
+pp = np.array([[ rrt.points[-1,0], rrt.points[-1,1] ]])
+# print(pp)
+next_index = int(rrt.points[-1,2])
+point_list = np.array([ pp[0] ])
+while next_index != 0:
+    pp = np.array([[ rrt.points[int(next_index), 0], rrt.points[int(next_index), 1] ]])
+    point_list = np.append(point_list, pp, axis=0)
+    next_index = int(rrt.points[next_index, 2])
+
+xx = []
+yy = []
+for point in point_list:
+    xx.append(point[0])
+    yy.append(point[1])
+plt.plot(xx,yy)
 plt.show()
-
-
