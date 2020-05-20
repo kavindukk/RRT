@@ -26,7 +26,7 @@ L = Node('L', 11, 7, {'D':13, 'K':5, 'M':9, 'O':4})
 M = Node('M', 12, 10, {'D':14, 'L':9, 'O':5})
 N = Node('N', 13, 7, {'G':12, 'J':3, 'K':7, 'P':7 })
 O = Node('O', 14, 5, {'L':4, 'M':5})
-P = Node('p', 15, 0, {'J':8, 'K':4, 'N':7})
+P = Node('P', 15, 0, {'J':8, 'K':4, 'N':7})
 
 nodes = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P]
 current_node = 'A'
@@ -61,8 +61,12 @@ def A_star_step():
     i = acitve_f.index(min(acitve_f))
     current_node = open_nodes[i]
 
-for i in range(3):   
+while 'P' not in list(globals()[current_node].graph.keys()):
+# for i in range(4):   
     A_star_step()
     print(current_node)
     print(open_nodes)
     print(closed_nodes)
+
+A_star_step()
+print(P.previous_node)

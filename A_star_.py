@@ -17,16 +17,16 @@ C = Node('C', 2, 13, {'0':5, '1':4, '3':7, '4':7, '7':8}) # 2
 D = Node('D', 3, 16, {'1':3, '2':7, '7':11, '10':16, '11':13, '12':14}) # 3 
 E = Node('E', 4, 16, {'2':7, '7':5, '5':4}) #4
 F = Node('F', 5, 20, {'4':4, '6':9}) #5
-G = Node('G', 6, 12, {'5':9, '14':12}) #6
+G = Node('G', 6, 12, {'5':9, '13':12}) #6
 H = Node('H', 7, 11, {'2':8, '3':11, '4':5, '8':3}) #7
 I = Node('I', 8, 10, {'7':3, '9':4}) #8
-J = Node('J', 9, 8,  {'8':4, '14':3, '16':8}) #9
-K = Node('K', 10, 4, {'3':16,'11':5, '14':7, '16':4}) #10
-L = Node('L', 11, 7, {'3':13,'10':5, '12':9, '15':4}) #11
-M = Node('M', 12, 10,{'3':14,'11':9, '15':5}) #12
-N = Node('N', 13, 7, {'G':12,'9':3, '10':7, '16':7 }) #14
-O = Node('O', 14, 5, {'11':4,'12':5}) #15
-P = Node('p', 15, 0, {'J':8, '10':4, '14':7}) #16
+J = Node('J', 9, 8,  {'8':4, '13':3, '15':8}) #9
+K = Node('K', 10, 4, {'3':16,'11':5, '13':7, '15':4}) #10
+L = Node('L', 11, 7, {'3':13,'10':5, '12':9, '14':4}) #11
+M = Node('M', 12, 10,{'3':14,'11':9, '14':5}) #12
+N = Node('N', 13, 7, {'6':12,'9':3, '10':7, '15':7 }) #13
+O = Node('O', 14, 5, {'11':4,'12':5}) #14
+P = Node('p', 15, 0, {'9':8, '10':4, '13':7}) #15
 
 nodes = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P]
 current_node = 'A'
@@ -68,14 +68,14 @@ class A_star():
         self.current_index = self.open_nodes[i]  
 
     def run(self):
-        # while str(self.end_index) not in list(self.nodes[int(self.current_index)].graph.keys()):
-        for i in range(2):   
+        while str(self.end_index) not in list(self.nodes[int(self.current_index)].graph.keys()):
+        # for i in range(6):   
             self.A_star_step()
             print(self.current_index)
             print(self.open_nodes)
             print(self.closed_nodes) 
-        # self.A_star_step()
-        # print(self.nodes[self.end_index].previous_node)
+        self.A_star_step()
+        print(self.nodes[self.end_index].previous_node)
 
 
 AS_ = A_star(nodes, 0, 15)
