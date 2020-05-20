@@ -26,7 +26,7 @@ L = Node('L', 11, 7, {'3':13,'10':5, '12':9, '14':4}) #11
 M = Node('M', 12, 10,{'3':14,'11':9, '14':5}) #12
 N = Node('N', 13, 7, {'6':12,'9':3, '10':7, '15':7 }) #13
 O = Node('O', 14, 5, {'11':4,'12':5}) #14
-P = Node('p', 15, 0, {'9':8, '10':4, '13':7}) #15
+P = Node('P', 15, 0, {'9':8, '10':4, '13':7}) #15
 
 nodes = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P]
 current_node = 'A'
@@ -71,12 +71,25 @@ class A_star():
         while str(self.end_index) not in list(self.nodes[int(self.current_index)].graph.keys()):
         # for i in range(6):   
             self.A_star_step()
-            print(self.current_index)
-            print(self.open_nodes)
-            print(self.closed_nodes) 
+            # print(self.current_index)
+            # print(self.open_nodes)
+            # print(self.closed_nodes) 
         self.A_star_step()
-        print(self.nodes[self.end_index].previous_node)
+        # print(self.nodes[self.end_index].previous_node)
+        path = self.node_l()
+        return path
+
+    def node_l(self):
+        next_node = self.nodes[int(self.end_index)].previous_node
+        node_list = [self.nodes[int(self.end_index)].node_name]
+        while next_node != '0':
+            node_list.append(self.nodes[int(next_node)].node_name)
+            next_node = self.nodes[int(next_node)].previous_node
+        node_list.append(self.nodes[int(self.start_index)].node_name)
+        node_list.reverse()
+        return node_list
 
 
 AS_ = A_star(nodes, 0, 15)
-AS_.run()
+optimum_path = AS_.run()
+print(optimum_path)
