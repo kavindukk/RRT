@@ -64,7 +64,7 @@ class RRT():
 
 rrt = RRT()
 rrt.path_plan()  
-print(rrt.points)
+# print(rrt.points)
 
 # Visualizing of RRT
 plt.axes()
@@ -104,7 +104,7 @@ while next_index != 0:
     pp = np.array([[ rrt.points[int(next_index), 0], rrt.points[int(next_index), 1] ]])
     point_list = np.append(point_list, pp, axis=0)
     next_index = int(rrt.points[next_index, 2])
-
+print(point_list)
 xx = []
 yy = []
 for point in point_list:
